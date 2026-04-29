@@ -10,21 +10,28 @@ import postRoutes from "./routes/postRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
 dotenv.config();
-
 connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}));
 
 app.use(express.json());
 
+// ✅ FIXED FILE UPLOAD CONFIG
 app.use(
   fileUpload({
-    useTempFiles: true
+    useTempFiles: true,
+    tempFileDir: "./uploads",
+    createParentPath: true,
+    limits: { fileSize: 10 * 1024 * 1024 }
   })
 );
 
+// Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/upload", uploadRoutes);

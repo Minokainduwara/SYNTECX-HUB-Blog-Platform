@@ -1,15 +1,18 @@
 import API from "./axios";
 
-/**
- * Uploads an image to Cloudinary via the backend.
- * Backend expects multipart field name `image`.
- */
 export async function uploadImage(file: File): Promise<string> {
   const formData = new FormData();
   formData.append("image", file);
-  const { data } = await API.post<{ imageUrl: string }>(
-    "/api/upload",
-    formData
+
+  const { data } = await API.post(
+    "/upload", // ❗ NO /api here
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    }
   );
+
   return data.imageUrl;
 }
