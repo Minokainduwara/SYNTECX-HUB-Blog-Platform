@@ -33,11 +33,11 @@ export function PostsScene({ posts = [] }: Props) {
     // Scene
     const scene = new THREE.Scene();
 
-    scene.background = new THREE.Color(0x06060f);
+    scene.background = new THREE.Color(0x120403);
 
     scene.fog = new THREE.FogExp2(
-      0x06060f,
-      0.035
+      0x120403,
+      0.032
     );
 
     // Camera
@@ -81,16 +81,16 @@ export function PostsScene({ posts = [] }: Props) {
     // Lights
     const ambient =
       new THREE.AmbientLight(
-        0x8899cc,
-        0.35
+        0xff9a5c,
+        0.42
       );
 
     scene.add(ambient);
 
     const key =
       new THREE.DirectionalLight(
-        0xffffff,
-        1.1
+        0xffd0a3,
+        1.25
       );
 
     key.position.set(6, 12, 8);
@@ -99,8 +99,8 @@ export function PostsScene({ posts = [] }: Props) {
 
     const rim =
       new THREE.DirectionalLight(
-        0x4466ff,
-        0.45
+        0xff4d1f,
+        0.8
       );
 
     rim.position.set(-8, 4, -6);
@@ -136,14 +136,16 @@ export function PostsScene({ posts = [] }: Props) {
       const material =
         new THREE.MeshStandardMaterial({
           color: new THREE.Color().setHSL(
-            (i * 0.07) % 1,
-            0.35,
-            0.32
+            0.03 + (i % 6) * 0.02,
+            0.72,
+            0.38
           ),
 
-          metalness: 0.45,
+          metalness: 0.3,
 
-          roughness: 0.35
+          roughness: 0.28,
+          emissive: new THREE.Color(0x571200),
+          emissiveIntensity: 0.45
         });
 
       const mesh =
@@ -233,7 +235,7 @@ export function PostsScene({ posts = [] }: Props) {
         clock.getElapsedTime();
 
       root.rotation.y =
-        elapsed * 0.06;
+        elapsed * 0.08;
 
       camera.position.x =
         Math.sin(elapsed * 0.12) * 1.8;

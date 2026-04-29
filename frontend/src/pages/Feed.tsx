@@ -24,9 +24,10 @@ export function Feed() {
   return (
     <div class="feed">
       <div class="panel hero-panel">
-        <h1>Stories in orbit</h1>
+        <h1>Stories in the firestream</h1>
         <p class="muted">
-          Browse posts below — the 3D scene mirrors the same feed from your API.
+          Browse the latest stories while the phoenix scene and ember particles
+          mirror the same API-driven content around you.
         </p>
       </div>
       {posts.length === 0 ? (

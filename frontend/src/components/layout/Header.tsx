@@ -7,7 +7,7 @@ export function Header() {
   return (
     <header class="site-header">
       <Link to="/" class="brand">
-        Aurion Blog
+        Phoenix Blog
       </Link>
       <nav class="nav-links">
         <NavLink

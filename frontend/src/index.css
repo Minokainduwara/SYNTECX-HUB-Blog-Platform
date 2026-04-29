@@ -9,6 +9,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: #06060f;
+  background:
+    radial-gradient(circle at top, #4b0f08 0%, #140504 45%, #090202 100%);
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  color: #ffe7db;
 }
