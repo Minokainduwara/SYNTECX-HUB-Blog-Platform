@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import fileUpload from "express-fileupload";
 
 import connectDB from "./config/db.js";
 
@@ -15,11 +16,18 @@ connectDB();
 const app = express();
 
 app.use(cors());
+
 app.use(express.json());
 
-//app.use("/api/auth", authRoutes);
-//app.use("/api/posts", postRoutes);
-//app.use("/api/upload", uploadRoutes);
+app.use(
+  fileUpload({
+    useTempFiles: true
+  })
+);
+
+app.use("/api/auth", authRoutes);
+app.use("/api/posts", postRoutes);
+app.use("/api/upload", uploadRoutes);
 
 const PORT = process.env.PORT || 5000;
 
